@@ -4163,9 +4163,11 @@
         </g>
       </svg>
       <div class="box-border p-10 rounded-lg bg-text">
-        <p class="font-bold text-2xl my-4">Page Under Construction</p>
-        <p class="text-xl mb-1">Hi, we are currently working on this page.</p>
-        <p class="text-xl">check out our social media to get updates:</p>
+        <p class="font-bold text-2xl text-center my-4">
+          {{ $t("page under construction") }}
+        </p>
+        <p class="text-xl mb-1 text-center">{{ $t("underconstuct-1") }}</p>
+        <p class="text-xl text-center">{{ $t("underconstuct-2") }}</p>
         <div class="flex justify-center my-4">
           <SocialMedia />
         </div>
@@ -4175,198 +4177,197 @@
 </template>
 
 <script>
-  import { defineComponent } from "vue";
-  import SocialMedia from "./SocialMedia.vue";
+import SocialMedia from "./SocialMedia.vue";
 
-  export default defineComponent({ components: { SocialMedia } });
+export default { components: { SocialMedia } };
 </script>
 
 <style scoped>
-  @media only screen and (min-width: 640px) {
-    svg {
-      width: 480px;
-      height: 480px;
-    }
+@media only screen and (min-width: 640px) {
+  svg {
+    width: 480px;
+    height: 480px;
   }
+}
 
-  .bg-text {
-    background-color: #f5f5f5;
-  }
+.bg-text {
+  background-color: #f5f5f5;
+}
 
-  .bg-code {
-    background-image: url("../assets/bg-code.jpg");
-    background-size: cover;
-  }
-  svg#freepik_stories-operating-system:not(.animated) .animable {
+.bg-code {
+  background-image: url("../assets/bg-code.jpg");
+  background-size: cover;
+}
+svg#freepik_stories-operating-system:not(.animated) .animable {
+  opacity: 0;
+}
+svg#freepik_stories-operating-system.animated #freepik--Floor--inject-18 {
+  animation: 1s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn,
+    6s Infinite linear floating;
+  animation-delay: 0s, 1s;
+}
+svg#freepik_stories-operating-system.animated #freepik--Plant--inject-18 {
+  animation: 1.5s Infinite linear wind;
+  animation-delay: 0s;
+}
+svg#freepik_stories-operating-system.animated #freepik--Gears--inject-18 {
+  animation: 1s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn,
+    1.5s Infinite linear wind;
+  animation-delay: 0s, 1s;
+}
+svg#freepik_stories-operating-system.animated #freepik--window-1--inject-18 {
+  animation: 1.5s Infinite linear floating;
+  animation-delay: 0s;
+}
+svg#freepik_stories-operating-system.animated #freepik--window-2--inject-18 {
+  animation: 3s Infinite linear floating;
+  animation-delay: 0s;
+}
+svg#freepik_stories-operating-system.animated
+  #freepik--speech-bubble--inject-18 {
+  animation: 1s 1 forwards ease-in zoomOut, 1.5s Infinite linear wind;
+  animation-delay: 0s, 1s;
+}
+@keyframes zoomIn {
+  0% {
     opacity: 0;
+    transform: scale(0.5);
   }
-  svg#freepik_stories-operating-system.animated #freepik--Floor--inject-18 {
-    animation: 1s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn,
-      6s Infinite linear floating;
-    animation-delay: 0s, 1s;
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
-  svg#freepik_stories-operating-system.animated #freepik--Plant--inject-18 {
-    animation: 1.5s Infinite linear wind;
-    animation-delay: 0s;
+}
+@keyframes floating {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
   }
-  svg#freepik_stories-operating-system.animated #freepik--Gears--inject-18 {
-    animation: 1s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn,
-      1.5s Infinite linear wind;
-    animation-delay: 0s, 1s;
+  50% {
+    transform: translateY(-10px);
   }
-  svg#freepik_stories-operating-system.animated #freepik--window-1--inject-18 {
-    animation: 1.5s Infinite linear floating;
-    animation-delay: 0s;
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
   }
-  svg#freepik_stories-operating-system.animated #freepik--window-2--inject-18 {
-    animation: 3s Infinite linear floating;
-    animation-delay: 0s;
+}
+@keyframes wind {
+  0% {
+    transform: rotate(0deg);
   }
-  svg#freepik_stories-operating-system.animated
-    #freepik--speech-bubble--inject-18 {
-    animation: 1s 1 forwards ease-in zoomOut, 1.5s Infinite linear wind;
-    animation-delay: 0s, 1s;
+  25% {
+    transform: rotate(1deg);
   }
-  @keyframes zoomIn {
-    0% {
-      opacity: 0;
-      transform: scale(0.5);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
+  75% {
+    transform: rotate(-1deg);
   }
-  @keyframes floating {
-    0% {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0px);
-    }
+}
+@keyframes zoomOut {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
   }
-  @keyframes wind {
-    0% {
-      transform: rotate(0deg);
-    }
-    25% {
-      transform: rotate(1deg);
-    }
-    75% {
-      transform: rotate(-1deg);
-    }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
-  @keyframes zoomOut {
-    0% {
-      opacity: 0;
-      transform: scale(1.5);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  .st0 {
-    fill: #f5f5f5;
-  }
-  .st1 {
-    fill: #e0e0e0;
-  }
-  .st2 {
-    fill: #365347;
-  }
-  .st3 {
-    opacity: 0.15;
-    enable-background: new;
-  }
-  .st4 {
-    fill: #ffffff;
-  }
-  .st5 {
-    opacity: 0.25;
-    enable-background: new;
-  }
-  .st6 {
-    opacity: 0.3;
-    enable-background: new;
-  }
-  .st7 {
-    opacity: 0.2;
-    enable-background: new;
-  }
-  .st8 {
-    fill: #37474f;
-  }
-  .st9 {
-    fill: #455a64;
-  }
-  .st10 {
-    fill: #263238;
-  }
-  .st11 {
-    opacity: 0.9;
-    fill: #455a64;
-    enable-background: new;
-  }
-  .st12 {
-    opacity: 0.6;
-  }
-  .st13 {
-    opacity: 0.9;
-    fill: #263238;
-    enable-background: new;
-  }
-  .st14 {
-    opacity: 0.5;
-  }
-  .st15 {
-    opacity: 0.6;
-    fill: #ffffff;
-    enable-background: new;
-  }
-  .st16 {
-    fill: #ffc7a7;
-  }
-  .st17 {
-    fill: #f29b8f;
-  }
-  .st18 {
-    opacity: 0.8;
-    fill: #ffffff;
-    enable-background: new;
-  }
-  .st19 {
-    fill: #fafafa;
-  }
-  .st20 {
-    font-family: "Rubik-Regular";
-  }
-  .st21 {
-    font-size: 13.3463px;
-  }
-  .st22 {
-    font-size: 15.4109px;
-  }
-  .st23 {
-    font-size: 7.9649px;
-  }
-  .st24 {
-    opacity: 0.1;
-    enable-background: new;
-  }
-  .st25 {
-    opacity: 0.7;
-    fill: #ffffff;
-    enable-background: new;
-  }
-  .st26 {
-    opacity: 0.3;
-    fill: #ffffff;
-    enable-background: new;
-  }
+}
+.st0 {
+  fill: #f5f5f5;
+}
+.st1 {
+  fill: #e0e0e0;
+}
+.st2 {
+  fill: #365347;
+}
+.st3 {
+  opacity: 0.15;
+  enable-background: new;
+}
+.st4 {
+  fill: #ffffff;
+}
+.st5 {
+  opacity: 0.25;
+  enable-background: new;
+}
+.st6 {
+  opacity: 0.3;
+  enable-background: new;
+}
+.st7 {
+  opacity: 0.2;
+  enable-background: new;
+}
+.st8 {
+  fill: #37474f;
+}
+.st9 {
+  fill: #455a64;
+}
+.st10 {
+  fill: #263238;
+}
+.st11 {
+  opacity: 0.9;
+  fill: #455a64;
+  enable-background: new;
+}
+.st12 {
+  opacity: 0.6;
+}
+.st13 {
+  opacity: 0.9;
+  fill: #263238;
+  enable-background: new;
+}
+.st14 {
+  opacity: 0.5;
+}
+.st15 {
+  opacity: 0.6;
+  fill: #ffffff;
+  enable-background: new;
+}
+.st16 {
+  fill: #ffc7a7;
+}
+.st17 {
+  fill: #f29b8f;
+}
+.st18 {
+  opacity: 0.8;
+  fill: #ffffff;
+  enable-background: new;
+}
+.st19 {
+  fill: #fafafa;
+}
+.st20 {
+  font-family: "Rubik-Regular";
+}
+.st21 {
+  font-size: 13.3463px;
+}
+.st22 {
+  font-size: 15.4109px;
+}
+.st23 {
+  font-size: 7.9649px;
+}
+.st24 {
+  opacity: 0.1;
+  enable-background: new;
+}
+.st25 {
+  opacity: 0.7;
+  fill: #ffffff;
+  enable-background: new;
+}
+.st26 {
+  opacity: 0.3;
+  fill: #ffffff;
+  enable-background: new;
+}
 </style>

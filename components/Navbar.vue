@@ -1,11 +1,13 @@
 <template>
-  <div class="fixed w-full h-20 mx-auto md:flex md:justify-center p-0 m-0 navbar">
+  <div
+    class="fixed w-full h-20 mx-auto md:flex md:justify-center p-0 m-0 navbar"
+  >
     <div
       class="md:container md:justify-between sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3"
     >
       <div class="flex items-center justify-between sm:p-0">
         <div>
-          <router-link to="/">
+          <nuxt-link :to="localePath('index')">
             <svg
               height="38"
               xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +133,7 @@
                 </g>
               </g>
             </svg>
-          </router-link>
+          </nuxt-link>
         </div>
 
         <div class="sm:hidden">
@@ -184,14 +186,33 @@
           :class="isOpen ? 'block' : 'hidden'"
           class="md:flex md:flex-row md:items-center"
         >
-          <li v-for="route in routes" :key="route.text">
-            <router-link
-              :to="route.to"
-              :class="{ active: isActive(route.to) }"
+          <li>
+            <NuxtLink
+              :to="localePath('blog')"
               class="navbar-link hover:bg-gray-200 hover:text-black sm:mt-0 sm:ml-2"
+              >{{ $t("blog") }}</NuxtLink
             >
-              {{ route.text }}
-            </router-link>
+          </li>
+          <li>
+            <NuxtLink
+              :to="localePath('store')"
+              class="navbar-link hover:bg-gray-200 hover:text-black sm:mt-0 sm:ml-2"
+              >{{ $t("store") }}</NuxtLink
+            >
+          </li>
+          <li>
+            <NuxtLink
+              :to="localePath('menu')"
+              class="navbar-link hover:bg-gray-200 hover:text-black sm:mt-0 sm:ml-2"
+              >{{ $t("menu") }}</NuxtLink
+            >
+          </li>
+          <li>
+            <NuxtLink
+              :to="localePath('about')"
+              class="navbar-link hover:bg-gray-200 hover:text-black sm:mt-0 sm:ml-2"
+              >{{ $t("about") }}</NuxtLink
+            >
           </li>
         </ul>
       </nav>
@@ -200,41 +221,25 @@
 </template>
 
 <script>
-  import { computed, defineComponent } from "vue";
-  import { useRouter } from "vue-router";
+const data = { isOpen: false };
 
-  const data = { isOpen: false };
-
-  export default defineComponent({
-    setup() {
-      const routes = [ 
-        { to: "/menu", text: "Menu" },
-        { to: "/store", text: "Store" },
-        { to: "/blog", text: "Blog" },
-        { to: "/about", text: "About" },
-        // { to: "/contact", text: "Contact" }, 
-      ];
-      const router = useRouter();
-      const activeRoute = computed(() => router.currentRoute.value.path);
-      const isActive = (path) => path === activeRoute.value;
-      return { isActive, routes };
-    },
-    data() {
-      return data;
-    },
-    methods: {
-      toggle() {
-        this.isOpen = !this.isOpen;
-      },
-    },
-  });
+export default {
+  data: function() {
+    return data;
+  },
+  methods: {
+    toggle: function() {
+      this.isOpen = !this.isOpen;
+    }
+  }
+};
 </script>
 
 <style scoped>
-  .navbar {
-    @apply bg-primary-500 p-5;
-  }
-  .navbar-link {
-    @apply no-underline mt-1 block px-2 py-1 text-white font-semibold rounded;
-  }
+.navbar {
+  @apply bg-primary-500 p-5;
+}
+.navbar-link {
+  @apply no-underline mt-1 block px-2 py-1 text-white font-semibold rounded;
+}
 </style>

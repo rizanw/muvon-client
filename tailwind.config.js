@@ -1,16 +1,23 @@
+// @ts-ignore
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  purge: [
+    "./components/**/*.{vue,js}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./nuxt.config.{js,ts}"
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {}, 
+    extend: {},
     colors: {
       transparent: "transparent",
       black: "#000",
       white: "#fff",
       gray: colors.coolGray,
-      
+
       primary: {
         100: "#E5F6E8",
         200: "#CCEDD6",
@@ -20,7 +27,7 @@ module.exports = {
         600: "#27473D",
         700: "#1B3B34",
         800: "#11302C",
-        900: "#0A2727",
+        900: "#0A2727"
       },
       success: {
         100: "#DCF8D0",
@@ -31,7 +38,7 @@ module.exports = {
         600: "#127121",
         700: "#0C5F20",
         800: "#074C1E",
-        900: " #043F1D",
+        900: " #043F1D"
       },
       info: {
         100: "#C9F7FA",
@@ -42,7 +49,7 @@ module.exports = {
         600: "#025487",
         700: "#013F71",
         800: "#002D5B",
-        900: "#00204B",
+        900: "#00204B"
       },
       warning: {
         100: "#FCF3CA",
@@ -53,7 +60,7 @@ module.exports = {
         600: "#AF7201",
         700: "#925B01",
         800: "#764500",
-        900: "#613600",
+        900: "#613600"
       },
       danger: {
         100: "#FCE1D3",
@@ -64,12 +71,12 @@ module.exports = {
         600: "#B31C2C",
         700: "#96132C",
         800: "#790C2A",
-        900: "#640729",
-      },
-    },
+        900: "#640729"
+      }
+    }
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [],
+  plugins: []
 };
